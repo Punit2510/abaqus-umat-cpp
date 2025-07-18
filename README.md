@@ -1,11 +1,49 @@
-# Abaqus-UMAT-C++-subroutine
+# 🔩 Abaqus UMAT Subroutine in C++ with Eigen Integration
 
-The Requirements are MSVS and an Intel Compiler. The procedure can be found here: https://www.youtube.com/watch?v=T3hAV8gfnec. Shoutout to him.
+This repository provides a C++ implementation of a *UMAT (User Material Subroutine)* for *Abaqus Standard, used for modeling a 3D linear elastic isotropic material. The subroutine uses the **Eigen* C++ library for matrix operations and is compiled using *Microsoft Visual Studio (MSVS)* along with the *Intel compiler*.
 
-First: Compilation of the cpp-file.
-You need MSVS to create an object-file in the MSVS Terminal. The Compilation Flags can be found in the win86_64 file from Abaqus. 
-In my Example you also have to insert Eigen and its folder directionary.
+---
 
-Second: Execution.
-In the Abaqus Terminal with the Command: abaqus user=umat job=umat analysis interactive 
-Visualization with abaqus cae database=umat.odb
+## 🧩 Features
+
+- Custom material model defined using a C++ UMAT subroutine.
+- Integration with *Eigen* library for efficient matrix operations.
+- Compatible with Abaqus .inp files for user-defined material analysis.
+- Easy visualization of simulation results in *Abaqus CAE*.
+
+---
+
+## 🛠 Requirements
+
+- Microsoft Visual Studio (MSVS)
+- Intel C++/Fortran Compiler (linked with Abaqus)
+- Abaqus CAE
+- Eigen Library (Header-only)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Compile the UMAT C++ Code
+
+Open the *MSVS Developer Command Prompt* and run:
+
+```bash
+cl /c /O2 /I"path\to\eigen" umat.cpp
+> Replace path\to\eigen with the actual path to your Eigen folder.  
+> This will generate an object file umat.obj.
+
+---
+
+### 2. Run the Abaqus Simulation
+
+Once the .obj file is generated, use the Abaqus Command Prompt to execute the simulation:
+
+```bash
+abaqus job=umat user=umat.obj interactive
+
+This will run the analysis defined in the umat.inp input file.
+
+After the simulation is complete, you can visualize the results in Abaqus CAE using:
+
+abaqus cae database=umat.odb
